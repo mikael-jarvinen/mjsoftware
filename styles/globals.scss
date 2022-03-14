@@ -1,0 +1,157 @@
+@import "./colors.module.scss";
+@import "../node_modules/rfs/scss";
+@import "./breakpoints.module.scss";
+@import "./mixins.module.scss";
+
+
+body {
+    color: $font-color-primary;
+    background-image: url('/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: $background;
+
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: normal;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+hr {
+    border: none;
+    background-color: transparentize($grey-primary, 0.5);
+    height: 1px;
+    margin-inline: 10px;
+}
+
+.spacer {
+    padding-block: 5vh;
+}
+
+h1 {
+    font-weight: normal;
+    margin: 0;
+    @include font-size(4rem);
+}
+h2 {
+    font-weight: normal;
+    margin: 0;
+    @include font-size(3.5rem);
+}
+h3 {
+    font-weight: normal;
+    margin: 0;
+    @include font-size(3rem);
+}
+h4 {
+    font-weight: normal;
+    margin: 0;
+    @include font-size(2.5rem);
+}
+h5 {
+    font-weight: normal;
+    margin: 0;
+    @include font-size(2rem);
+}
+h6 {
+    font-weight: normal;
+    margin: 0;
+    @include font-size(1.5rem);
+}
+
+p {
+    @include font-size(1.1rem);
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    @include lg-min {
+        max-width: 1200px;
+    }
+    @include sm-min {
+        padding-inline: 24px;
+    }
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.textInput {
+    label {
+        padding-left: 20px;
+    }
+
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    color: $font-color-primary;
+    padding-inline: 21px;
+    padding-block: 14px;
+    margin-inline: 8px;
+    margin-block: 12px;
+    border: 0;
+    border-bottom: 2px solid white;
+    border-radius: 5px;
+    background: linear-gradient(
+        to top,
+        transparentize($grey-primary, 0.25),
+        transparentize($grey-primary, 0.5)
+    );
+    @include font-size(1.1rem);
+
+    &:focus {
+        border-bottom: 2px solid $secondary;
+        transition: border-bottom 0.2s ease-out;
+        outline: none;
+    }
+}
+
+textarea {
+    resize: none;
+    color: $font-color-primary;
+    padding-inline: 21px;
+    padding-block: 14px;
+    margin-inline: 8px;
+    margin-block: 12px;
+    border: 0;
+    border-bottom: 2px solid white;
+    border-radius: 5px;
+    background: linear-gradient(
+        to top,
+        transparentize($grey-primary, 0.25),
+        transparentize($grey-primary, 0.5)
+    );
+    @include font-size(1.1rem);
+
+    &:focus {
+        border-bottom: 2px solid $secondary;
+        transition: border-bottom 0.2s ease-out;
+        outline: none;
+    }
+}
+
+button {
+    background-color: darken($secondary, 15);
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+    padding: 15px;
+    color: $font-color-primary;
+    font-weight: normal;
+    text-transform: uppercase;
+    @include font-size(1.2rem);
+    @include box-shadow(10);
+}

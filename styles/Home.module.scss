@@ -1,0 +1,218 @@
+@import "./colors.module.scss";
+@import "./breakpoints.module.scss";
+@import "./mixins.module.scss";
+
+.heroContainer {
+    text-align: center;
+    padding-block: 10vh;
+}
+
+.heroHeader {
+    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+}
+
+.panel1 {
+    @include sm-min {
+        border-radius: 4px;
+    }
+
+    color: $font-color-primary;
+
+    @include md-min {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    div {
+        text-align: center;
+        padding-block: 3vh;
+        margin-block: 5vh;
+        margin-inline: 2vh;
+        padding-inline: 4vh;
+        background: linear-gradient(
+            to top,
+            transparentize($background, 0.25),
+            transparentize(lighten($background, 2), 0.75)
+        );
+        border-radius: 5px;
+
+        @include box-shadow(20);
+
+        p {
+            color: transparentize($font-color-primary, $amount: 0.25)
+        }
+    }
+
+}
+
+.panel2 {
+    @include box-shadow(20);
+    padding-inline: 4vh;
+    padding-block: 3vh;
+    @include md-min {
+        display: flex;
+        padding-right: 0px;
+    }
+    @include sm-min {
+        border-radius: 5px;
+    }
+
+    color: $font-color-secondary;
+
+    background: linear-gradient(
+        to top,
+        $freelanceri,
+        darken($freelanceri, 2)
+    );
+
+    .description {
+        padding-right: 2vw;
+        p {
+            color: transparentize($font-color-secondary, $amount: 0.25)
+        }
+    }
+
+    .websitePreview {
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 5vh;
+        
+    
+        @include md-min {
+            margin-top: 0vh;
+            min-width: 50%;
+            max-width: 50%;
+            padding-left: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+    }
+}
+
+.panel3 {
+    @include box-shadow(20);
+    padding-inline: 4vh;
+    padding-block: 3vh;
+    @include md-min {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-left: 0px;
+    }
+    @include sm-min {
+        border-radius: 5px;
+    }
+
+    color: $font-color-primary;
+
+    background: linear-gradient(
+        to top,
+        $asiakastyytyvaisyystutkimukset,
+        darken($asiakastyytyvaisyystutkimukset, 2)
+    );
+
+    .description {
+        padding-left: 2vw;
+        p {
+            color: transparentize($font-color-primary, $amount: 0.25)
+        }
+    }
+
+    .websitePreview {
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 5vh;
+        
+    
+        @include md-min {
+            margin-top: 0vh;
+            min-width: 50%;
+            max-width: 50%;
+            padding-left: 0px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
+    }
+}
+
+.panel4 {
+    @include md-min {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .column {
+        margin-inline: 5vh;
+        margin-block: 5vh;
+
+        p {
+            color: transparentize($font-color-primary, $amount: 0.25)
+        }
+
+        .skills {
+            width: 100%;
+            margin-block: 1vh;
+
+            .allSkills {
+                text-align: right;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                color: rgb(15, 15, 15);
+            }
+
+            .skills90{
+                width: 90%; background-color: #fff;
+            }
+            .skills80{
+                width: 80%; background-color: #fff;
+            }
+            .skillsGraphQL {
+                width: 80%; background-color: #fff;
+            }
+            .skills75 {
+                width: 75%; background-color: #fff;
+            }
+            .skills60 {
+                width: 60%; background-color: #fff;
+            }
+            .skills35 {
+                width: 35%; background-color: #fff;
+            }
+        }
+    }
+}
+
+.centerText {
+    text-align: center;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.panel5 {
+    padding-block: 3vh;
+    margin-block: 5vh;
+    margin-inline: 2vh;
+    padding-inline: 4vh;
+    background: linear-gradient(
+        to top,
+        transparentize($background, 0.25),
+        transparentize(lighten($background, 4), 0.75)
+    );
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+
+    @include box-shadow(20);
+
+    .gridContainer {
+        @include md-min {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
