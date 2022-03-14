@@ -154,4 +154,11 @@ button {
     text-transform: uppercase;
     @include font-size(1.2rem);
     @include box-shadow(10);
+    cursor: pointer;
+
+    &:hover {
+        @include box-shadow(20);
+        transform: scale(1.1);
+        transition: transform 0.1s;
+    }
 }
