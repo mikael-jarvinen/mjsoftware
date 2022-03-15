@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import { FormEventHandler, useState } from 'react'
 import styles from '../styles/Home.module.scss'
@@ -40,6 +41,15 @@ const Home: NextPage = () => {
 
   return (
     <div>
+      <Head>
+        <meta key="og:title" name='title' content='M.J. Web&Software fullstack developer' />
+        <title>M.J. Web&Software fullstack developer</title>
+        <meta
+          name='description'
+          content='Rääätälöidyt websivut ja ohjelmistot moderneilla teknologioilla. React, Node, Rest, GraphQL...'
+        />
+      </Head>
+      
       <div className={styles.heroContainer}>
         <div className={styles.heroHeader}>
           <hgroup>
@@ -133,7 +143,7 @@ const Home: NextPage = () => {
             <div className={styles.websitePreview}>
               <Image
                 
-                src='/freelanceri.net.png'
+                src='/freelanceri.net.webp'
                 width={884}
                 height={920}
                 alt='freelanceri.net'
@@ -170,7 +180,7 @@ const Home: NextPage = () => {
             <div className={styles.websitePreview}>
               <Image
                 
-                src='/asiakastyytyväisyystutkimukset.fi.png'
+                src='/asiakastyytyväisyystutkimukset.fi.webp'
                 width={884}
                 height={920}
                 alt='freelanceri.net'
@@ -267,7 +277,7 @@ const Home: NextPage = () => {
             <p>
               <br></br>
               <br></br>
-              Tämän sivuston rakentamiseen meni alle 12 tuntia.
+              Tämän sivuston rakentamiseen meni alle 9 tuntia.
             </p>
           </div>
         </div>
