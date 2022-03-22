@@ -2,8 +2,11 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 const Document = () => {
   return (
-    <Html lang='fi'>
-      <Head />
+    <Html>
+      <Head>
+        <link rel="alternate" hrefLang="en-US" href="https://mjsoftware.fi/en-US" />
+        <link rel="alternate" hrefLang="fi" href="https://mjsoftware.fi/fi" />
+      </Head>
       <body>
         <Main />
         <NextScript />

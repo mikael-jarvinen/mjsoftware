@@ -1,12 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { FormEventHandler, useState } from 'react'
 import styles from '../styles/Home.module.scss'
+import dictionary from '../dictionary'
+import { disconnect } from 'process'
 
 const Home: NextPage = () => {
+  const router = useRouter()
   const [sending, setSending] = useState(false)
   const [contactSent, setContactSent] = useState(false)
+  const { locale } = router
+
+  const dict = locale === 'en-US' ? dictionary['en-US'] : dictionary.fi
 
   const handleContactFormSubmit: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
@@ -42,21 +49,21 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <meta key="og:title" name='title' content='M.J. Web&Software fullstack developer' />
-        <title>M.J. Web&Software fullstack developer</title>
+        <meta key="og:title" name='title' content={dict.metaTitle} />
+        <title>{dict.metaTitle}</title>
         <meta
           name='description'
-          content='Rääätälöidyt websivut ja ohjelmistot moderneilla teknologioilla. React, Node, Rest, GraphQL...'
+          content={dict.metaDescription}
         />
       </Head>
       
       <div className={styles.heroContainer}>
         <div className={styles.heroHeader}>
           <hgroup>
-            <h1>M.J. Web&Software</h1>
+            <h1>{dict.title}</h1>
             <hr className='divider' />
             <h6>
-              Räätälöidyt websivut ja ohjelmistot
+              {dict.subtitle}
             </h6>
           </hgroup>
         </div>
@@ -64,7 +71,7 @@ const Home: NextPage = () => {
       <div className={styles.flexCenter}>
         <a href='#contact-form'>
           <button>
-            Ota yhteyttä
+            {dict.heroContactButton}
           </button>
         </a>
       </div>
@@ -72,34 +79,31 @@ const Home: NextPage = () => {
       <div className='spacer' />
       <div>
         <div className={styles.centerText}>
-          <h3>Kaikki ominaisuudet, joita tarvitset</h3>
+          <h3>{dict.section1Title}</h3>
         </div>
         <div className='spacer' />
         <div className='container'>
           <div className={styles.panel1}>
             <div>
-              <h4>Moderni</h4>
+              <h4>{dict.section1Card1Title}</h4>
               <br></br>
               <p>
-                Nettisivut joita tuotan ovat rakennettu moderneimmilla teknologioilla
-                mitä saattaa löytää esim. <b>React</b>, <b>NextjS</b>, <b>GraphQL</b>,{' '}
+                {dict.section1Card1Content} <b>React</b>, <b>NextjS</b>, <b>GraphQL</b>,{' '}
                 <b>Rest</b>, <b>Node</b>, <b>JVM</b>...
               </p>
             </div>
             <div>
-              <h4>Nopea</h4>
+              <h4>{dict.section1Card2Title}</h4>
               <br></br>
               <p>
-                Modernit teknologiat ja käytännöt sekoitettuna huolelliseen ja tarkkaan 
-                kehitystyöhön mahdollistavat tuotosteni suuren nopeuden ja pienen viiveen.
+                {dict.section1Card2Content}
               </p>
             </div>
             <div>
-              <h4>Siisti</h4>
+              <h4>{dict.section1Card3Title}</h4>
               <br></br>
               <p>
-                Nettisivut joita tuotan ovat tyylikkäitä ja käyttäjäystävällisiä, ja koodi, jota 
-                kirjoitan on siistiä ja helpostiluettavaa. Kädenjäljissäni silmä lepää.
+                {dict.section1Card3Content}
               </p>
             </div>
           </div>
@@ -109,7 +113,7 @@ const Home: NextPage = () => {
       <div className='spacer' />
       <div>
         <div className={styles.centerText}>
-          <h3>Referenssit</h3>
+          <h3>{dict.section2Title}</h3>
         </div>
         <div className='spacer' />
         <div className='container'>
@@ -121,22 +125,18 @@ const Home: NextPage = () => {
               <br></br>
               <br></br>
               <p>
-                Uusin rakentamani sivusto. Sivusto toimii ilmaisena palveluna freelancereille, 
-                kevytyrittäjille, pienyrityksille... Työnantajat julkaisevat tarjouspyyntöjä ja 
-                freelancerit lähettävät tarjouksia.
+                {dict.section2Card1Content1}
               </p>
               <br></br>
-              <h5>Teknologia</h5>
+              <h5>{dict.section2Card1Title2}</h5>
               <br></br>
               <p>
-                Sivusto pyörii <b>Docker</b> containereilla ja hyödyntää googlen Recaptcha 
-                rajapintaa, google-analytics ja search-console työkaluja. Sivusto on myös 
-                toimiva PWA.
+                {dict.section2Card1Content2}
                 <br></br>
-                Frontendin &rdquo;stäkki&rdquo;:{' '}
+                {dict.section2Card1front}
                 <b>NextJS</b>, <b>Typescript</b>, <b>Apollo</b>
                 <br></br>
-                Backendin &rdquo;stäkki&rdquo;:{' '}
+                {dict.section2Card1back}
                 <b>Scala</b>, <b>Akka</b>, <b>Sangria(GraphQL)</b>
               </p>
             </div>
@@ -162,18 +162,16 @@ const Home: NextPage = () => {
               <br></br>
               <br></br>
               <p>
-                Asiakkaalleni tuottama sivusto, jolla kerätään asiakaspalautteita suomen 
-                yrityksistä. Sivu hakee YTJ:n rajapinnasta saatavat yritykset ja rakentaa näille 
-                yrityksille omat sivut, jonne voi mennä antamaan yrityksestä palautetta.
+                {dict.section2Card2Content1}
               </p>
               <br></br>
-              <h5>Teknologia</h5>
+              <h5>{dict.section2Card2Title2}</h5>
               <br></br>
               <p>
-                Frontendin &rdquo;stäkki&rdquo;:{' '}
+                {dict.section2Card2front}
                 <b>NextJS</b>, <b>Javascript</b>, <b>Apollo</b>
                 <br></br>
-                Backendin &rdquo;stäkki&rdquo;:{' '}
+                {dict.section2Card2back}
                 <b>NodeJs</b>, <b>Strapi(GraphQL)</b>
               </p>
             </div>
@@ -194,7 +192,7 @@ const Home: NextPage = () => {
       <div id='about' className='container'>
         <div className={styles.panel4}>
           <div className={styles.column}>
-            <h5>Taidot & Osaaminen</h5>
+            <h5>{dict.section3Column1Title}</h5>
             <br></br>
             <br></br>
             <p>React</p>
@@ -259,14 +257,12 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className={styles.column}>
-            <h5>Itsestäni</h5>
+            <h5>{dict.section3Column2Title}</h5>
             <small>Mikael Järvinen</small>
             <br></br>
             <br></br>
             <p>
-              Olen Naantalilainen freelance fullstack-ohjelmoija.
-              Olen ohjelmoinut harrastus mielessä 2 vuotta ja työ mielessä 2 vuotta. Painotuksena
-              on ollut web-ohjelmointi. Hallitsen hyvin nykyaikaisia menetelmiä ja käytäntöjä kuten:
+              {dict.section3Column2Paragraph1}
             </p>
             <ul>
               <li>TDD</li>
@@ -277,7 +273,7 @@ const Home: NextPage = () => {
             <p>
               <br></br>
               <br></br>
-              Tämän sivuston rakentamiseen meni alle 9 tuntia.
+              {dict.section3Column2Paragraph2}
             </p>
           </div>
         </div>
@@ -286,45 +282,45 @@ const Home: NextPage = () => {
       <div className='container'>
         {contactSent ? (
           <div className={styles.centerText}>
-            <h5>Yhteydenottopyyntö lähetetty</h5>
+            <h5>{dict.contactFormSubmitted}</h5>
           </div>
         ) : (
           <form id='contact-form' onSubmit={handleContactFormSubmit}>
             <div className={styles.panel5}>
               <div className={styles.centerText}>
-                <h4>Ota yhteyttä</h4>
+                <h4>{dict.contactFormTitle}</h4>
                 <div className='spacer' />
               </div>
               <div className={styles.gridContainer}>
                 <div className='textInput'>
-                  <label htmlFor='email-input'>Sähköposti*</label>
+                  <label htmlFor='email-input'>{dict.contactFormEmail}</label>
                   <input
                     id='email-input'
                     type='text'
                     name='email'
-                    placeholder='(pakollinen)'
+                    placeholder={dict.contactFormRequired}
                     required
                     minLength={6}
                   />
                 </div>
                 <div className='textInput'>
-                  <label htmlFor='phoneNumber-input'>Puhelinnumero*</label>
+                  <label htmlFor='phoneNumber-input'>{dict.contactFormPhonenumber}</label>
                   <input
                     id='phoneNumber-input'
                     type='tel'
                     name='phoneNumber'
-                    placeholder='(pakollinen)'
+                    placeholder={dict.contactFormRequired}
                     required
                     minLength={7}
                   />
                 </div>
                 <div className='textInput'>
-                  <label htmlFor='message-input'>Viesti*</label>
+                  <label htmlFor='message-input'>{dict.contactFormMessage}</label>
                   <textarea
                     id='message-input'
                     name='message'
                     rows={5}
-                    placeholder='(pakollinen)'
+                    placeholder={dict.contactFormRequired}
                     required
                     minLength={50}
                   />
@@ -333,7 +329,7 @@ const Home: NextPage = () => {
               <br></br>
               <br></br>
               <div className={styles.flexCenter}>
-                <button type="submit">Lähetä</button>
+                <button type="submit">{dict.contactFormSubmit}</button>
               </div>
             </div>
           </form>

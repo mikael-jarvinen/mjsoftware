@@ -4,6 +4,10 @@ const nextConfig = {
   experimental: {
     outputStandalone: true,
   },
+  i18n: {
+    locales: ['en-US', 'fi'],
+    defaultLocale: 'fi',
+  },
 }
 
 module.exports = nextConfig
